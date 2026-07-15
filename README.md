@@ -1,6 +1,10 @@
 # GuideMe: Multi-Domain Task Guidance and Intervention in Streaming Video (ECCV 2026)
 
-
+<p align="center">
+  <a href="https://arxiv.org/abs/2607.02991"><img src="https://img.shields.io/badge/arXiv-Paper-red?logo=arxiv&logoColor=white" /></a>
+  <a href="https://fawnliu.github.io/project/guideme/"><img src="https://img.shields.io/badge/Project-Page-blue?logo=googlechrome&logoColor=white" /></a>
+  <img src="https://img.shields.io/badge/ECCV-2026-green" />
+</p>
 
 ## Abstract
 
