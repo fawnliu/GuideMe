@@ -1,0 +1,12 @@
+# Configuration for score_v2.py
+#
+# Only the `judger` section is consumed by score_v2.py. It specifies the LLM
+# used as an automatic judge for open-ended (PartlyCorrect) answers.
+#
+# The judger class reads its API credentials from environment variables
+# (see tools.llm_utils.GeminiAPIGenerator). Set LLM_API_KEY before running.
+
+judger:
+    class: "tools.llm_utils.GeminiAPIGenerator"
+    args:
+        model: "gemini-3-pro-preview"

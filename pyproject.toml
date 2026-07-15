@@ -1,0 +1,50 @@
+[project]
+name = "guideme-eval"
+version = "0.1.0"
+description = "GuideMe: multi-domain streaming-video task guidance — evaluation pipeline (data prep, inference, three-facet scoring)."
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    # HTTP / API clients (llm_utils.py talks to Gemini / OpenAI-compatible endpoints).
+    "requests>=2.32.0",
+    "certifi>=2024.0.0",
+    # Config + progress + JSON repair used across inference and scoring.
+    "pyyaml>=6.0",
+    "tqdm>=4.66.0",
+    "json-repair>=0.30.0",
+    # Numeric / data stack for score/metric_match_final.py and score_v2*.py.
+    "numpy>=1.26.0",
+    "pandas>=2.2.0",
+    "scipy>=1.13.0",
+    "joblib>=1.4.0",
+    "pillow>=10.0.0",
+    # Sentence-alignment scoring (sentence-transformers/all-mpnet-base-v2) + torch backend.
+    "torch>=2.2.0",
+    "sentence-transformers>=3.0.0",
+    # Local HF backend (local_backend.py): Qwen3-VL via transformers + qwen-vl-utils.
+    # Pinned to the validated version: 4.57.x adds the Qwen3-VL classes and still
+    # accepts qwen-vl-utils' per-video list `fps` in videos_kwargs. Newer
+    # transformers (>=5.x) validate `fps` as a scalar and reject the list.
+    "transformers==4.57.3",
+    "torchvision>=0.17.0",
+    "qwen-vl-utils>=0.0.11",
+    "accelerate>=0.30.0",
+    # Video reader backend for qwen-vl-utils. Recent torchvision (>=0.22) dropped
+    # torchvision.io.read_video, so we install decord and force it as the backend
+    # (see FORCE_QWENVL_VIDEO_READER in scripts/infer_local.sh).
+    "decord>=0.6.0",
+    # Data preparation: process/chunk_videos_1s.py (also needs the ffmpeg binary on PATH).
+    "av>=12.0.0",
+    "ffmpeg-python>=0.2.0",
+]
+
+[tool.uv]
+required-version = ">=0.4"
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+# Orchestration/eval scripts only — no importable package to install.
+py-modules = []

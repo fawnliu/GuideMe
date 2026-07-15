@@ -1,0 +1,15 @@
+# Copy this file to  api_setting.yaml  (same directory: the repo root) and fill
+# in your own credentials. api_setting.yaml is gitignored, so your key is never
+# committed. Every infer/score entry point loads it via tools/api_config.py, so
+# you no longer need to `export LLM_API_KEY=...` before each run.
+#
+# (Environment variables LLM_API_KEY / LLM_API_HOST, if set, still take
+#  precedence over this file.)
+
+# API key for the LLM judge (Step 2 scoring) and the API inference backend (Step 1).
+api_key: "your-api-key"
+
+# API host WITHOUT the scheme -- the code builds  https://{api_host}{endpoint}.
+# e.g.   api.openai.com
+api_host: "your-api-host"
+
